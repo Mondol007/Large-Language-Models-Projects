@@ -2,45 +2,45 @@
 
 ## Bangla-Text-preprocessing-with-Llama2
 
-- **Model Setup and Quantization**: The project loads and quantizes a Llama-2 model in 4-bit precision using BitsAndBytesConfig, optimizing it for efficient deployment on limited GPU resources with PyTorch.
+- **Model Setup and Quantization**: The project loaded and quantized a Llama-2 model in 4-bit precision using BitsAndBytesConfig, optimizing it for efficient deployment on limited GPU resources with PyTorch.
 
-- **Bangla RQA Dataset Loading**: The project uses the BanglaRQA dataset for training, validation, and testing. This dataset is loaded from the Hugging Face datasets library and is converted into DataFrames for easier manipulation and display.
+- **Bangla RQA Dataset Loading**: The project used the BanglaRQA dataset for training, validation, and testing. This dataset was loaded from the Hugging Face datasets library and is converted into DataFrames for easier manipulation and display.
 
-- **Text Normalization and Preprocessing**: Custom functions remove unwanted punctuation (excluding question marks) and normalize Bangla text. This includes handling specific Bangla punctuation, preparing contexts and questions for cleaner input, and tokenizing answers.
+- **Text Normalization and Preprocessing**: Custom functions removed unwanted punctuation (excluding question marks) and normalized Bangla text. This included handling specific Bangla punctuation, preparing contexts and questions for cleaner input, and tokenizing answers.
 
-- **Entity Tagging and Label Mapping**: For training on sequence tagging, answers are tokenized and labeled as B, I, or O, representing beginning, inside, and outside of answer spans, respectively. These labels are mapped to numerical IDs for compatibility with the model.
+- **Entity Tagging and Label Mapping**: For training on sequence tagging, answers were tokenized and labeled as B, I, or O, representing the beginning, inside, and outside of answer spans, respectively. These labels were mapped to numerical IDs for compatibility with the model.
 
-- **Data Augmentation for Contextual Inputs**: The preprocessing appends "হ্যাঁ না ।" ("Yes No") to contexts and prepares inputs by concatenating questions and contexts, creating a more interactive and context-rich input format for the model.
+- **Data Augmentation for Contextual Inputs**: The preprocessing appended "হ্যাঁ না ।" ("Yes No") to contexts and prepared inputs by concatenating questions and contexts, creating a more interactive and context-rich input format for the model.
 
 
 
 ## Fine-Tune-Llama2-with-QLoRA
 
-- **Dataset Preparation**: Loads the "Articles_Constitution_3300_Instruction_Set" dataset, merging prompt and output text fields for coherent input-output pairs.
+- **Dataset Preparation**: Loaded the "Articles_Constitution_3300_Instruction_Set" dataset, merging prompt and output text fields for coherent input-output pairs.
 
-- **Model Setup**: Uses Llama-2 7B model in 4-bit quantization mode with BitsAndBytesConfig to optimize memory usage and improve processing efficiency.
+- **Model Setup**: Used Llama-2 7B model in 4-bit quantization mode with BitsAndBytesConfig to optimize memory usage and improve processing efficiency.
 
-- **LoRA Configuration**: Applies Low-Rank Adaptation (LoRA) with specific hyperparameters (alpha, dropout, rank) to adapt the model for fine-tuning on the dataset with minimal additional parameters.
+- **LoRA Configuration**: Applied Low-Rank Adaptation (LoRA) with specific hyperparameters (alpha, dropout, rank) to adapt the model for fine-tuning on the dataset with minimal additional parameters.
 
-- **Training Configuration**: Defines training parameters including batch size, optimizer type, gradient accumulation, learning rate, warmup, and max gradient norm for stable training.
+- **Training Configuration**: Defined training parameters including batch size, optimizer type, gradient accumulation, learning rate, warmup, and max gradient norm for stable training.
 
-- **Trainer Initialization**: Initializes an SFTTrainer from TRL (TRL library), which manages LoRA fine-tuning and training on the provided dataset.
+- **Trainer Initialization**: Initialized an SFTTrainer from TRL (TRL library), which manages LoRA fine-tuning and training on the provided dataset.
 
-- **Precision Adjustment**: Converts normalization layers to 32-bit for stability and accuracy during fine-tuning.
+- **Precision Adjustment**: Converted normalization layers to 32-bit for stability and accuracy during fine-tuning.
 
-- **Model Saving and Deployment**: Saves the fine-tuned model and pushes it to Hugging Face Hub under a specified repository, enabling public access and reusability.
+- **Model Saving and Deployment**: Saved the fine-tuned model and pushed it to Hugging Face Hub under a specified repository, enabling public access and reusability.
 
-- **Inference**: Tests the model by generating text based on a sample from the dataset, printing the result for quick evaluation.
+- **Inference**: Tested the model by generating text based on a sample from the dataset, printing the result for quick evaluation.
 
 
 
 ## Retrieval Augmented Generation with Llama2 & Langchain
 
-- **Model Setup and Quantization**: The project utilizes the Llama-2 model with 4-bit quantization to reduce memory usage, making it suitable for deployment on limited GPU resources. It uses the bitsandbytes library to manage quantization configurations, optimizing the model for efficient inference.
+- **Model Setup and Quantization**: The project utilized the Llama-2 model with 4-bit quantization to reduce memory usage, making it suitable for deployment on limited GPU resources. It used the bitsandbytes library to manage quantization configurations, optimizing the model for efficient inference.
 
-- **Conversational Retrieval Chain**: Through LangChain, the project sets up a conversational retrieval system using HuggingFacePipeline for text generation and FAISS for vector storage. The system retrieves relevant documents and answers questions, using stored embeddings for efficient querying.
+- **Conversational Retrieval Chain**: Through LangChain, the project set up a conversational retrieval system using HuggingFacePipeline for text generation and FAISS for vector storage. The system retrieved relevant documents and answers questions, using stored embeddings for efficient querying.
 
-- **Document Loading and Splitting**: Web-based documents are loaded and split into manageable chunks using recursive character splitting, which improves the system’s handling of large texts and ensures that the conversational retrieval chain can access specific information segments effectively.
+- **Document Loading and Splitting**: Web-based documents were loaded and split into manageable chunks using recursive character splitting, which improved the system’s handling of large texts and ensures that the conversational retrieval chain can access specific information segments effectively.
 
-- **Embedding and Vector Storage**: The system stores embeddings generated by a sentence-transformers model in FAISS, creating a searchable vector database that enhances response accuracy for user queries.
+- **Embedding and Vector Storage**: The system stored embeddings generated by a sentence-transformers model in FAISS, creating a searchable vector database that enhances response accuracy for user queries.
 
