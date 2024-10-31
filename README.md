@@ -1,6 +1,6 @@
 # Large-Language-Models-Projects
 
-## Bangla-Text-preprocessing-with-LLama2
+## Bangla-Text-preprocessing-with-Llama2
 
 - **Model Setup and Quantization**: The project loads and quantizes a Llama-2 model in 4-bit precision using BitsAndBytesConfig, optimizing it for efficient deployment on limited GPU resources with PyTorch.
 
